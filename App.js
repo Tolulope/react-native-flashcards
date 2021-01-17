@@ -1,6 +1,7 @@
 import React from 'react'
 import { View, Platform } from 'react-native'
-import { createBottomTabNavigator, createStackNavigator } from 'react-navigation'
+import { createAppContainer, createBottomTabNavigator } from 'react-navigation'
+import { createStackNavigator } from 'react-navigation-stack'
 import { FontAwesome, Ionicons } from '@expo/vector-icons'
 
 import Decks from './components/Decks'
@@ -85,6 +86,8 @@ const MainNavigator = createStackNavigator({
   },
 })
 
+const AppContainer = createAppContainer(MainNavigator);
+
 
 export default class App extends React.Component {
   componentDidMount () {
@@ -94,7 +97,7 @@ export default class App extends React.Component {
     return (
       <Provider store={store}>
         <View style={{flex: 1}}>
-          <MainNavigator />
+          <AppContainer />
         </View>
       </Provider>
     )
